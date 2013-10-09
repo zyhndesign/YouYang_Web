@@ -39,6 +39,14 @@ $(document).ready(function(){
         ZY.uiManager.hideMusicPlayer();
     });
 
+    //显示菜单
+    $("#zy_show_menu").mouseenter(function(){
+        ZY.uiManager.showMenu();
+    });
+    $("#zy_nav").mouseleave(function(){
+        ZY.uiManager.hideMenu();
+    });
+
     //菜单点击事件
     $("#zy_nav a").click(function(){
         var target=$(this).attr("href");
@@ -46,11 +54,6 @@ $(document).ready(function(){
         return false;
     });
 
-    //logo点击事件
-    $("#zy_logo a").click(function(){
-        ZY.uiManager.scrollToTarget($("#zy_top_post"));
-        return false;
-    });
 
     //获取封面故事和推荐文章
     ZY.dataManager.getTopPosts();

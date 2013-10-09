@@ -24,8 +24,22 @@ ZY.uiManager=(function(){
          * 隐藏音乐播放器
          */
         hideMusicPlayer:function(){
-            $("#zy_music_section").stop(true,true).width(60);
+            $("#zy_music_section").stop(true,true).width(50);
             $("#zy_music_player").addClass("zy_hidden");
+        },
+
+        showMenu:function(){
+            $("#zy_nav").animate({
+                width:"600px"
+            },100,function(){
+                $("#zy_menu").removeClass("zy_hidden");
+                $("#zy_show_menu").addClass("zy_show_menu_active");
+            });
+        },
+        hideMenu:function(){
+            $("#zy_nav").stop(true,true).width(50);
+            $("#zy_menu").addClass("zy_hidden");
+            $("#zy_show_menu").removeClass("zy_show_menu_active");
         },
 
         /**
@@ -35,22 +49,11 @@ ZY.uiManager=(function(){
         scrollToTarget:function(target){
             var top=target.offset().top;
 
-            if(!$("#zy_nav").hasClass("zy_nav_active")){
-                top=top-80;
-            }
             if(top!= undefined){
                 TweenLite.killTweensOf(window);
 
-                //需要减去nav的高度，以为到下面后nav就是fixed不占高度,加5是为了在滚动那里设置nav的状态
-                if(target.is("#zy_artifact")){
-                    TweenLite.to(window, 1, {scrollTo:{y:top+35, x:0}});
-                }else if(target.is("#zy_community")){
-                    TweenLite.to(window, 1, {scrollTo:{y:top+35, x:0}});
-                }else if(target.is("#zy_people")){
-                    TweenLite.to(window, 1, {scrollTo:{y:top-20, x:0}});
-                }else{
-                    TweenLite.to(window, 1, {scrollTo:{y:top, x:0}});
-                }
+                //加1是为了让滚动的事件设置菜单为active状态,如果不加1会显示成上一个菜单active
+                TweenLite.to(window, 1, {scrollTo:{y:top+1, x:0}});
 
             }
 

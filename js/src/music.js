@@ -42,7 +42,7 @@ ZY.music={
     musicPlay:function(){
         var audio=$("#zy_music_audio");
         audio[0].play();
-        $("#zy_music_show").addClass("zy_music_show_play");
+        $("#zy_music_show").addClass("zy_music_show_active");
         $("#zy_music_control").addClass("zy_music_pause").removeClass("zy_music_play");
 
         //开始进入不播放，在播放状态点击下一首就不会自动播放，所以要设置一下autoplay属性
@@ -57,7 +57,7 @@ ZY.music={
     musicPause:function(){
         var audio=$("#zy_music_audio");
         audio[0].pause();
-        $("#zy_music_show").removeClass("zy_music_show_play");
+        $("#zy_music_show").removeClass("zy_music_show_active");
         $("#zy_music_control").removeClass("zy_music_pause").addClass("zy_music_play");
 
         //开始进入不播放，在暂停状态，点击下一首应该不要自动播放，所以要去除autoplay属性

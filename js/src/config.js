@@ -19,7 +19,7 @@ ZY.config={
     },
     articleWidths:{
         peopleWidth:240, //每个分类的li的宽度
-        landscapeWidth:280,
+        landscapeWidth:320,
         communityWidth:240,
         artifactWidth:320
     },

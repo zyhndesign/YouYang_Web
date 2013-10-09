@@ -58,7 +58,7 @@
         <span class="zy_separate">分割线</span>
         <div id="zy_music_timeline" class="zy_music_timeline">时间线</div>
     </div>
-    <a id="zy_music_show" class="zy_music_show"></a>
+    <a id="zy_music_show" class="zy_music_show">显示音乐</a>
     <!--播放器-->
     <audio class="zy_hidden" id="zy_music_audio" src=""></audio>
     <!--播放列表-->
@@ -75,6 +75,16 @@
     </ul>
 </section>
 
+<!--菜单栏-->
+<nav id="zy_nav" class="zy_nav">
+    <span id="zy_show_menu" class="zy_show_menu">显示菜单</span>
+    <ul id="zy_menu" class="zy_hidden">
+        <li><a href="#zy_landscape">风景</a></li>
+        <li><a href="#zy_people">人文</a></li>
+        <li><a href="#zy_artifact">物语</a></li>
+        <li><a href="#zy_community">社区</a></li>
+    </ul>
+</nav>
 
 <div id="zy_main_wrapper" class="zy_main_wrapper">
 
@@ -88,22 +98,11 @@
     <span class="zy_dropdown">向下</span>
 </section>
 
-<!--菜单栏-->
-<nav id="zy_nav" class="zy_nav">
-    <span class="zy_show_menu">显示菜单</span>
-    <ul>
-        <li><a href="#zy_landscape">风景</a></li>
-        <li><a href="#zy_people">人文</a></li>
-        <li><a href="#zy_artifact">物语</a></li>
-        <li><a href="#zy_community">社区</a></li>
-    </ul>
-</nav>
-
 <!--------------------------------------推荐------------------------------------------>
 <section class="zy_featured">
-    <div class="zy_featured_left"></div>
+    <div id="zy_featured_left" class="zy_featured_left"></div>
     <header class="zy_featured_heading">推荐</header>
-    <div class="zy_featured_right"></div>
+    <div id="zy_featured_right" class="zy_featured_right"></div>
     <script id="zy_featured_articles_tpl" type="text/template">
 
         {@each top_posts as post,index}
@@ -128,29 +127,29 @@
 <!--------------------------------------风景------------------------------------------>
 <section id="zy_landscape" class="zy_landscape">
 	<div id="zy_landscape_bg" class="zy_section_bg">
-        <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg1.png">
+        <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg5.png">
     </div>
     <h2 class="zy_landscape_heading">风景</h2>
     <span class="zy_dropdown">向下</span>
     <!--<h3 class="zy_subheading">美不胜收的风景写真</h3>-->
     <section id="zy_landscape_contain" class="zy_landscape_contain">
+        <div id="zy_landscape_left" class="zy_landscape_left"></div>
         <h3 class="zy_subheading">美不胜收的风景写真</h3>
+        <div id="zy_landscape_right" class="zy_landscape_right"></div>
         <a id="zy_landscape_prev" class="zy_contain_prev zy_disable"></a>
         <div id="zy_landscape_list_container" class="zy_list_container">
         <script id="zy_landscape_articles_tpl" type="text/template">
 
             {@each posts as post}
-            <li  class="zy_landscape_article">
-                <div class="zy_article_info" data-zy-post-id="${post.top.post_id}" data-zy-post-type="${post.top.post_mime_type}">
-                    <img src="${post.top.thumb}"/>
-                    <h2>${post.top.post_title}</h2>
+            <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}" class="zy_landscape_article">
+                <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                <div class="zy_article_abstract">
+                    <h2>${post.post_title}</h2>
+                    <p class="zy_article_date">${post.post_date}</p>
+                    <p>
+                        ${post.post_excerpt}
+                    </p>
                 </div>
-                {@if post.bottom}
-                <div class="zy_article_info" data-zy-post-id="${post.bottom.post_id}" data-zy-post-type="${post.bottom.post_mime_type}">
-                    <img src="${post.bottom.thumb}"/>
-                    <h2>${post.bottom.post_title}</h2>
-                </div>
-                {@/if}
             </li>
             {@/each}
 
@@ -176,10 +175,10 @@
 	<!--<h3 class="zy_subheading">生生不息的人物故事</h3>-->
 
     <section id="zy_people_contain" class="zy_people_contain">
-        <div class="zy_people_left"></div>
-        <div class="zy_people_top"></div>
+        <div id="zy_people_left" class="zy_people_left"></div>
+        <div id="zy_people_top" class="zy_people_top"></div>
         <h3 class="zy_subheading">生生不息的人物故事</h3>
-        <div class="zy_people_right"></div>
+        <div id="zy_people_right" class="zy_people_right"></div>
         <a id="zy_people_prev" class="zy_contain_prev zy_disable">上一页</a>
         <div id="zy_people_list_container" class="zy_list_container">
             <script id="zy_people_articles_tpl" type="text/template">
@@ -215,9 +214,9 @@
 	<!--<h3 class="zy_subheading">从传统工艺到现代设计</h3>-->
 
     <section id="zy_artifact_contain" class="zy_artifact_contain">
-        <div class="zy_artifact_left"></div>
+        <div id="zy_artifact_left" class="zy_artifact_left"></div>
         <h3 class="zy_subheading">从传统工艺到现代设计</h3>
-        <div class="zy_artifact_bottom"></div>
+        <div id="zy_artifact_bottom" class="zy_artifact_bottom"></div>
         <a id="zy_artifact_prev" class="zy_contain_prev zy_disable">上一页</a>
         <div id="zy_artifact_list_container" class="zy_list_container">
             <script id="zy_artifact_articles_tpl" type="text/template">

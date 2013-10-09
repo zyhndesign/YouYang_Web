@@ -4,6 +4,7 @@ body{
     font-family: "宋体","Microsoft YaHei","Heiti SC";
     margin: 0;
     min-width: 730px;
+   /* overflow-x:hidden;*/
 }
 
 /*所有开始不显示的类*/
@@ -39,7 +40,7 @@ a{
 .zy_player{
     margin-right: 50px;
     height: 100%;
-    background: #cb2f3b;
+    background: #fff;
     position: relative;
     /*-webkit-transition: 2s ease;
     -moz-transition: 2s ease;
@@ -49,15 +50,18 @@ a{
     text-align:center;
     font-size: 14px;
     font-weight: bold;
-    margin: 0px 0px 0px 10%;
-    color:#fff;
+    margin: 0px;
+    color:#000;
     display: inline-block;
     height: 100%;
     line-height: 50px;
-
+    width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .zy_music_controller{
-    width: 30%;
+    width: 50%;
     height: 100%;
     position: absolute;
     top:0px;
@@ -67,44 +71,37 @@ a{
 }
 .zy_music_controller a{
     display: inline-block;
-    height: 14px;
+    height: 50px;
+    width: 50px;
     font-size: 0px;
     cursor: pointer;
-    margin: 0px 5%;
-    vertical-align: middle;
+    vertical-align: top;
 }
-.zy_music_prev{
-    width: 20px;
-    background: url(../../images/apps/sprite.png) no-repeat -1574px -917px;
+a.zy_music_prev{
+    width: 80px;
+    background: url(../../images/apps/music_prev_defult.png) no-repeat;
 }
 .zy_music_play{
-    width: 10px;
-    background: url(../../images/apps/sprite.png) no-repeat -1198px -1006px;
+    background: url(../../images/apps/music_play_defult.png) no-repeat;
 }
 .zy_music_pause{
-    width: 14px;
-    height: 12px;
-    background: url(../../images/apps/sprite.png) no-repeat -1758px -871px;
+    background: url(../../images/apps/music_puase_defult.png) no-repeat;
 }
-.zy_music_next{
-    width: 20px;
-    background: url(../../images/apps/sprite.png) no-repeat -2018px -2px;
+a.zy_music_next{
+    width: 80px;
+    background: url(../../images/apps/music_next_defult.png) no-repeat;
 }
 .zy_music_prev:hover{
-    width: 20px;
-    background: url(../../images/apps/sprite.png) no-repeat -2px -1005px;
+    background: url(../../images/apps/music_prev_actived.png) no-repeat;
 }
 .zy_music_play:hover{
-    background: url(../../images/apps/sprite.png) no-repeat -698px -972px;
+    background: url(../../images/apps/music_play_actived.png) no-repeat;
 }
 .zy_music_pause:hover{
-    width: 14px;
-    height: 12px;
-    background: url(../../images/apps/sprite.png) no-repeat -1998px -57px;
+    background: url(../../images/apps/music_puase_actived.png) no-repeat;
 }
 .zy_music_next:hover{
-    width: 20px;
-    background: url(../../images/apps/sprite.png) no-repeat -1683px -679px;
+    background: url(../../images/apps/music_next_actived.png) no-repeat;
 }
 .zy_separate{
     display: block;
@@ -115,19 +112,20 @@ a{
     right: 0px;
     font-size: 0px;
     width: 1px;
-    background: #fff;
+    background: #000;
 }
 .zy_music_show{
     display: inline-block;
     width: 50px;
     height: 50px;
     position: absolute;
+    font-size: 0px;
     bottom:0px;
     right: 0px;
     background: url(../../images/apps/music_entrance.png) no-repeat;
     cursor:pointer;
 }
-.zy_music_show.zy_music_show_play{
+.zy_music_show.zy_music_show_active{
     background: url(../../images/apps/music_entrance.gif) no-repeat;
 }
 .zy_music_timeline{
@@ -176,12 +174,14 @@ a{
     left: 50%;
     margin-left: -25px;
     z-index: 9;
+    font-size: 0px;
+    background: url(../../images/apps/down.png) no-repeat;
 }
 
 /*--菜单栏--*/
 .zy_nav{
-    width: 600px;
     height: 50px;
+    width: 50px;
     position: fixed;
     top:0px;
     z-index: 100;
@@ -189,19 +189,42 @@ a{
 .zy_show_menu{
     color: white;
     display: inline-block;
-    height: 100%;
-    line-height: 50px;
+    font-size: 0px;
+    background: url(../../images/apps/menu_defult.png) no-repeat;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0px;
+}
+.zy_show_menu:hover,.zy_show_menu_active{
+    background: url(../../images/apps/menu_active.png) no-repeat;
+    cursor: pointer;
 }
 .zy_nav ul{
-    width:80%;
-    margin:0px auto;
     text-align: center;
     padding:0px;
-    display: inline-block;
+    height: 100%;
+    margin:0px 0px 0px 50px;
+    background: #fff;
 }
 .zy_nav ul li{
     display: inline-block;
-    width: 20%;
+    width: 25%;
+    float: left;
+    height: 100%;
+}
+.zy_nav ul li a{
+    font-family: "Microsoft YaHei";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    color:#ccc;
+    border-right: 1px solid #ccc;
+}
+.zy_nav ul li a:hover,.zy_nav ul li a.active{
+    color:#000;
 }
 
 
@@ -218,6 +241,7 @@ a{
     -ms-box-sizing:border-box;
     box-sizing:border-box;
     z-index:5;
+    overflow: hidden;
 }
 .zy_featured_left{
     width: 330px;
@@ -225,7 +249,7 @@ a{
     background: url(../../images/apps/featured_left.png) no-repeat;
     position: absolute;
     left: -120px;
-    bottom:0px;
+    bottom:-100px;
 }
 .zy_featured_heading{
     width: 370px;
@@ -244,10 +268,10 @@ a{
     background: url(../../images/apps/featured_right.png) no-repeat;
     position: absolute;
     right:-190px;
-    bottom: 0px;
+    bottom: -100px;
 }
 .zy_featured_articles{
-    margin:70px 0;
+    margin:50px 0;
     padding:10px 0;
     text-align:center;
     width:100%;
@@ -279,6 +303,7 @@ a{
     width:100%;
 }
 .zy_featured_articles li .title{
+    font-family: "Microsoft YaHei";
     width:100%;
     font-size:18px;
     overflow:hidden;
@@ -291,9 +316,10 @@ a{
 .zy_featured_articles li .excerpt{
     text-align: left;
     color:#666;
-    height: 80px;
+    height: 72px;
     overflow: hidden;
     font-size: 14px;
+    line-height: 18px;
     margin: 10px;
     padding-top: 10px;
     border-top:2px solid #ccc;
@@ -372,23 +398,39 @@ a{
 /*--z-index:1--*/
 .zy_landscape_heading{
     font-size:0;
-    background:url(../../images/apps/slogan_artifact.png) no-repeat;
-    width:615px;
-    height:190px;
+    background:url(../../images/apps/slogan_landscape.png) no-repeat;
+    width:750px;
+    height:255px;
     position:absolute;
-    top:320px;
+    top:280px;
     left:50%;
-    margin-left:-307.5px;
+    margin-left:-375px;
     z-index:1;
 }
+.zy_landscape_left{
+    width: 620px;
+    height: 470px;
+    background: url(../../images/apps/landscape_left.png) no-repeat;
+    position: absolute;
+    left:0px;
+    bottom: -200px;
+}
+.zy_landscape_right{
+    min-width: 1280px;
+    width: 100%;
+    height: 595px;
+    background: url(../../images/apps/landscape_right.png) no-repeat center right;
+    position: absolute;
+    left:0px;
+    bottom: -200px;
+}
 .zy_landscape .zy_subheading{
-    background: url(../../images/apps/title_humanity.png) no-repeat;
-    width: 300px;
-    height: 150px;
+    background: url(../../images/apps/title_landscape.png) no-repeat;
+    width: 350px;
+    height: 155px;
     font-size: 0px;
     margin: 30px auto;
 }
-
 .zy_landscape_contain{
     width: 100%;
     height:800px;
@@ -396,12 +438,15 @@ a{
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     box-sizing:border-box;
-    background: url(../../images/default_bg/bg_featured.png) no-repeat;
+    background-image: url(../../images/default_bg/bg_artifact.png);
     background-size: 100% 100%;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
 	z-index:8;
+}
+.zy_landscape_contain .zy_contain_prev,.zy_landscape_contain .zy_contain_next{
+    margin-top: -50px;
 }
 .zy_landscape_contain>.zy_list_container{
     height: 600px;
@@ -421,43 +466,77 @@ a{
 }
 .zy_landscape_article{
     display: inline-block;
-    width: 280px;
-    height: 100%;
+    width: 300px;
+    height: 300px;
     white-space: normal;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     box-sizing:border-box;
-    padding:0 10px;
+    margin:0 10px;
     position:relative;
+    overflow:hidden;
     cursor:pointer;
-    vertical-align:top;
 }
-.zy_landscape_article>.zy_article_info{
-    position: relative;
+.zy_landscape_article>.zy_article_thumb{
+    width:300px;
+    height:300px;
+    overflow:hidden;
+    position:absolute;
+    top:0;
+    left:0;
 }
-.zy_landscape_article>.zy_article_info img{
+.zy_landscape_article>.zy_article_thumb img{
     width:100%;
 }
-.zy_landscape_article>.zy_article_info h2{
-    position: absolute;
-    bottom:0px;
-    left: 0px;
-    font-size: 18px;
-    color:#fff;
-    background: url(../../images/apps/articletitle_fengjing_bg.png) repeat-x;
-    margin: 0px;
-    height: 50px;
-    width: 100%;
-    line-height: 50px;
-    text-indent: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.zy_landscape_article>.zy_article_abstract{
+    width:100%;
+    height:300px;
+    overflow:hidden;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+    padding:20px 20px 30px 20px;
+    background:#bfbab4;
+    opacity: .8;
+    position:absolute;
+    top:300px;
+    left:0;
+    -webkit-transition:all 0.4s ease-out;
+    -moz-transition:all 0.4s ease-out;
+    -ms-transition:all 0.4s ease-out;
+    transition:all 0.4s ease-out;
 }
-.zy_landscape_article>.zy_article_info:nth-child(2n){
-    padding-top:20px;
+.zy_landscape_article:hover>.zy_article_abstract{
+    top:0;
 }
+.zy_landscape_article>.zy_article_abstract h2{
+    font-family: "Microsoft YaHei";
+    font-size:32px;
+    text-align:center;
+    color:#000;
+    font-weight: bold;
+}
+.zy_landscape_article>.zy_article_abstract p{
+    font-size:16px;
+    line-height:2em;
+    margin:auto;
+    color:#000;
+    width:260px;
+}
+.zy_landscape_article>.zy_article_abstract p.zy_article_date{
+    font-size:12px;
+    border-top:#ccc 1px solid;
+    padding-top:8px;
+    position:static;
+    text-align:center;
+    width:260px;
+    margin:auto;
+    display:block;
+    color:#000;
+}
+
 
 /*----------------------------------------------------------------------------人文z-index:3--*/
 .zy_people{
@@ -471,24 +550,25 @@ a{
     background: url(../../images/apps/humanity_left.png) no-repeat;
     position: absolute;
     left:0px;
-    bottom: -400px;
+    bottom: -600px;
 }
 .zy_people_top{
-    width: 800px;
+    min-width:1280px;
+    width:100%;
     height: 500px;
-    background: url(../../images/apps/humanity_top.png) no-repeat;
+    background: url(../../images/apps/humanity_top.png) no-repeat center center;
     position: absolute;
-    top: -250px;
-    left:50%;
-    margin-left: -400px;
+    top: -180px;
+    left:0px;
 }
 .zy_people_right{
-    width: 330px;
+    min-width: 1280px;
+    width: 100%;
     height: 420px;
-    background: url(../../images/apps/humanity_right.png) no-repeat;
+    background: url(../../images/apps/humanity_right.png) no-repeat center right;
     position: absolute;
-    right:0px;
-    bottom: -280px;
+    left:0px;
+    bottom: -380px;
 }
 /*--z-index:1--*/
 .zy_people_heading{
@@ -579,6 +659,7 @@ a{
     color:#666;
 }
 .zy_people_article>.zy_article_abstract h2,.zy_community_article>.zy_article_abstract h2{
+    font-family: "Microsoft YaHei";
     font-size:24px;
     color:#ca2e3a;
     overflow: hidden;
@@ -628,7 +709,7 @@ a{
     background: url(../../images/apps/artifact_left.png) no-repeat;
     position: absolute;
     left:100px;
-    top: 50px;
+    top: 150px;
 }
 .zy_artifact_bottom{
     width: 505px;
@@ -637,7 +718,7 @@ a{
     position: absolute;
     left:50%;
     margin-left: -252.5px;
-    bottom: 40px;
+    bottom: -60px;
 }
 .zy_artifact .zy_subheading{
     background: url(../../images/apps/title_artifact.png) no-repeat;
@@ -728,6 +809,7 @@ a{
     top:0;
 }
 .zy_artifact_article>.zy_article_abstract h2{
+    font-family: "Microsoft YaHei";
     font-size:32px;
     text-align:center;
     color:#000;
@@ -759,6 +841,8 @@ a{
 }
 .zy_community_contain{
     height: 1200px;
+    background: url(../../images/default_bg/bg_community.png) no-repeat;
+    background-size: 100% 100%;
 }
 /*--z-index:1--*/
 .zy_community_heading{
@@ -1170,7 +1254,7 @@ a{
     background: #fff;
     width: 100%;
     position:absolute;
-	top:60px;
+	top:50px;
 	bottom:0;
     overflow-x: auto;
 	overflow-y:hidden;
@@ -1194,13 +1278,13 @@ a{
 }
 .zy_article_content_close{
 	cursor:pointer;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display: block;
-    background: url(../../images/apps/left_defult.png) no-repeat ;
+    background: url(../../images/apps/back.png) no-repeat ;
 }
 .zy_article_content_close:hover{
-    background: url(../../images/apps/left_actived.png);
+    background: url(../../images/apps/back_actived.png);
 }
 .zy_show_load_container{
 	width:100%;

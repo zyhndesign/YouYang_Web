@@ -7,6 +7,38 @@
  */
 var ZY=ZY||{};
 ZY.controllerManager=(function(){
+    var oldScrollTop=0;
+    var featuredBottom=-100;
+    var landscapeBottom=-200;
+    var peopleTop=-180;
+    var peopleLeftBottom=-600;
+    var peopleRightBottom=-380;
+    var artifactLeftTop=150;
+    var artifactBottomBottom=-60;
+    var winH=$(window).height();
+    var landScapeBG=$("#zy_landscape_bg .zy_theme_bg_content");
+    var peopleBG=$("#zy_people_bg .zy_theme_bg_content");
+    var artifactBG=$("#zy_artifact_bg .zy_theme_bg_content");
+    var communityBG=$("#zy_community_bg .zy_theme_bg_content");
+
+
+    var featuredY=$(".zy_featured").offset().top;
+    var landScapeY=$("#zy_landscape").offset().top;
+    var peopleY=$("#zy_people").offset().top;
+    var artifactY=$("#zy_artifact").offset().top;
+    var communityY=$("#zy_community").offset().top;
+    var footerY=$(".zy_footer").offset().top;
+
+
+    var featuredLeftEl=$("#zy_featured_left");
+    var featuredRightEl=$("#zy_featured_right");
+    var landscapeLeftEl=$("#zy_landscape_left");
+    var landscapeRightEl=$("#zy_landscape_right");
+    var peopleLeftEl=$("#zy_people_left");
+    var peopleTopEl=$("#zy_people_top");
+    var peopleRightEl=$("#zy_people_right");
+    var artifactLeftEl=$("#zy_artifact_left");
+    var artifactBottomEl=$("#zy_artifact_bottom");
 
     /**
      * 设置页面的最大个数
@@ -101,13 +133,8 @@ ZY.controllerManager=(function(){
             if(args.isFirst){
 
                 //第一次请求要请求3页的数据
-                if(args.categoryId==ZY.config.categoryIds.landscapeId){
 
-                    //加载三页的数据，防止用户突然拉大屏幕，导致下一页数据不足=limit*3;
-                    limit=limit*3*2;
-                }else{
-                    limit=limit*3;
-                }
+                limit=limit*3;
             }else{
 
                 //如果不是第一次请求,最少加载两页数据，有可能用户突然拉大屏幕，导致下一页数据不足
@@ -149,14 +176,9 @@ ZY.controllerManager=(function(){
                 nextBtn.removeClass("zy_disable");
 
                 //但如果是第一次加载，并且数量小于一页的数量，要设置按钮不可见
-                if(args.categoryId==ZY.config.categoryIds.artifactId){
-                    if(args.isFirst&&(length<=(args.limit+1)/3-1)){
-                        nextBtn.addClass("zy_disable");
-                    }
-                }else{
-                    if(args.isFirst&&(length<=args.limit/3)){
-                        nextBtn.addClass("zy_disable");
-                    }
+
+                if(args.isFirst&&(length<=args.limit/3)){
+                    nextBtn.addClass("zy_disable");
                 }
 
                 if(length<args.limit){
@@ -201,7 +223,7 @@ ZY.controllerManager=(function(){
                 ZY.uiManager.showPeoplePosts(posts);
             }else if(categoryId==ZY.config.categoryIds.landscapeId){
                 ZY.dataManager.lastLandscapeDate=posts[length-1]["post_full_date"];
-                ZY.uiManager.showLandscapePosts(this.handlerLandscapePosts(posts,length));
+                ZY.uiManager.showLandscapePosts(posts);
             }else if(categoryId==ZY.config.categoryIds.communityId){
                 ZY.dataManager.lastCommunityDate=posts[length-1]["post_full_date"];
                 ZY.uiManager.showCommunityPosts(posts);
@@ -398,48 +420,23 @@ ZY.controllerManager=(function(){
          */
         scrollingHandler:function(){
             var sy=window.pageYOffset;
-            var topH=$("#zy_top_post").height();
-            var winH=$(window).height();
-            var landScapeBG=$("#zy_landscape_bg .zy_theme_bg_content");
-            var peopleBG=$("#zy_people_bg .zy_theme_bg_content");
-            var artifactBG=$("#zy_artifact_bg .zy_theme_bg_content");
-            var communityBG=$("#zy_community_bg .zy_theme_bg_content");
-
-
-            var menu=$("#zy_nav");
-            var landScapeY=$("#zy_landscape").offset().top;
-            var peopleY=$("#zy_people").offset().top;
-            var artifactY=$("#zy_artifact").offset().top;
-            var communityY=$("#zy_community").offset().top;
-            var footerY=$(".zy_footer").offset().top;
-
-            //菜单操作
-            if(sy>=topH){
-                if(!menu.hasClass("zy_nav_active")){
-                    menu.addClass("zy_nav_active");
-                }
-            }else{
-                if(menu.hasClass("zy_nav_active")){
-                    menu.removeClass("zy_nav_active");
-                }
-            }
 
             //设置顶部菜单状态, 首先重置所有菜单,计算时要减去nav的80高
             $("#zy_nav ul li a").removeClass("active");
-            if(sy<=landScapeY-80){
+            if(sy<=landScapeY){
 
-            }else if(sy<=peopleY-80){
+            }else if(sy<=peopleY){
                 $("#zy_nav ul li:nth-child(1) a").addClass("active");
-            }else if(sy<=artifactY-80){
+            }else if(sy<=artifactY){
                 $("#zy_nav ul li:nth-child(2) a").addClass("active");
-            }else if(sy<=communityY-80){
+            }else if(sy<=communityY){
+                $("#zy_nav ul li:nth-child(3) a").addClass("active");
+            }else if(sy<=footerY){
                 $("#zy_nav ul li:nth-child(4) a").addClass("active");
-            }else if(sy<=footerY-80){
-                $("#zy_nav ul li:nth-child(5) a").addClass("active");
             }
 
             //设置背景状态
-            if(sy>landScapeY-winH && sy<=landScapeY+720){
+            if(sy>landScapeY-winH && sy<=landScapeY+800){
                 if(!ZY.config.deviceCode.iOS){
                         landScapeBG.addClass("zy_bg_fixed");
                     }
@@ -459,7 +456,7 @@ ZY.controllerManager=(function(){
                 landScapeBG.removeClass("zy_bg_fixed");
             }
 
-            if(sy>peopleY-winH && sy<=peopleY+720){
+            if(sy>peopleY-winH && sy<=peopleY+800){
                 if(!ZY.config.deviceCode.iOS){
                         peopleBG.addClass("zy_bg_fixed");
                     }
@@ -479,7 +476,7 @@ ZY.controllerManager=(function(){
                 peopleBG.removeClass("zy_bg_fixed");
             }
 
-            if(sy>artifactY-winH && sy<=artifactY+720){
+            if(sy>artifactY-winH && sy<=artifactY+800){
                 if(!ZY.config.deviceCode.iOS){
                         artifactBG.addClass("zy_bg_fixed");
                     }
@@ -498,7 +495,7 @@ ZY.controllerManager=(function(){
             }else{
                 artifactBG.removeClass("zy_bg_fixed");
             }
-            if(sy>communityY-winH && sy<=communityY+720){
+            if(sy>communityY-winH && sy<=communityY+800){
                 if(!ZY.config.deviceCode.iOS){
                         communityBG.addClass("zy_bg_fixed");
                     }
@@ -517,6 +514,127 @@ ZY.controllerManager=(function(){
             }else{
                 communityBG.removeClass("zy_bg_fixed");
             }
+
+
+            //控制每一层的动画,需要根据滚动方向来设置
+            if(sy>oldScrollTop){
+
+                //向下滚动推荐层的人物变动
+                if(sy>=featuredY-300){
+                    if(featuredBottom<0){
+                        featuredLeftEl.css("bottom",featuredBottom+9);
+                        featuredRightEl.css("bottom",featuredBottom+9);
+                        featuredBottom+=9;
+                    }
+                }
+
+                if(sy>landScapeY+500){
+                    if(landscapeBottom<0){
+                        landscapeLeftEl.css("bottom",landscapeBottom+18);
+                        landscapeRightEl.css("bottom",landscapeBottom+18);
+                        landscapeBottom+=18;
+                    }
+                }
+
+                //向下滚动人文动画
+                if(sy>peopleY){
+                    if(peopleTop>-280){
+                        peopleTopEl.css("top",peopleTop-10);
+                        peopleTop-=10;
+                    }
+
+                    if(peopleLeftBottom<-400){
+                        peopleLeftEl.css("bottom",peopleLeftBottom+15);
+                        peopleLeftBottom+=15;
+                    }
+
+                    if(sy>peopleY+800){
+                        if(peopleRightBottom<-280){
+                            peopleRightEl.css("bottom",peopleRightBottom+15);
+                            peopleRightBottom+=15;
+                        }
+                    }
+
+                }
+
+                //向下滚动物语变化
+                if(sy>artifactY+300){
+
+                    if(artifactLeftTop>50){
+                        artifactLeftEl.css("top",artifactLeftTop-10);
+                        artifactLeftTop-=10;
+                    }
+
+                    if(sy>artifactY+800){
+                        if(artifactBottomBottom<40){
+                            artifactBottomEl.css("bottom",artifactBottomBottom+10);
+                            artifactBottomBottom+=10;
+                        }
+                    }
+                }
+            }else{
+
+                //向上滚动推荐层的人物变动
+                if(sy<landScapeY){
+
+                    if(featuredBottom>-100){
+                        featuredLeftEl.css("bottom",featuredBottom-9);
+                        featuredRightEl.css("bottom",featuredBottom-9);
+                        featuredBottom-=9;
+                    }
+                }
+
+                if(sy<peopleY){
+                    if(landscapeBottom>-200){
+                        landscapeLeftEl.css("bottom",landscapeBottom-18);
+                        landscapeRightEl.css("bottom",landscapeBottom-18);
+                        landscapeBottom-=18;
+                    }
+                }
+
+                //向上人文动画
+                if(sy<peopleY+1600){
+                    if(sy<peopleY+1200){
+                        if(peopleTop<-180){
+                            peopleTopEl.css("top",peopleTop+10);
+                            peopleTop+=10;
+                        }
+                    }
+
+                    if(sy<peopleY+1800){
+                        if(peopleLeftBottom>-600){
+                            peopleLeftEl.css("bottom",peopleLeftBottom-15);
+                            peopleLeftBottom-=15;
+                        }
+
+                        if(peopleRightBottom>-380){
+                            peopleRightEl.css("bottom",peopleRightBottom-15);
+                            peopleRightBottom-=15;
+                        }
+                    }
+
+
+                }
+
+                //向上物语动画
+                if(sy<artifactY+1600){
+                    if(sy<artifactY+1400){
+                        if(artifactLeftTop<150){
+                            artifactLeftEl.css("top",artifactLeftTop+10);
+                            artifactLeftTop+=10;
+                        }
+                    }
+
+                    if(artifactBottomBottom>-60){
+                        artifactBottomEl.css("bottom",artifactBottomBottom-10);
+                        artifactBottomBottom-=10;
+                    }
+
+                }
+            }
+
+            //重新赋值
+            oldScrollTop=sy;
         },
 
         /**
