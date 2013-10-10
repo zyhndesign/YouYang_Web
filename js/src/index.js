@@ -133,7 +133,7 @@ $(document).ready(function(){
     });
 
     //显示单篇文章时的横向滚动
-    ZY.controllerManager.wheelScrollModeOn($("#zy_article_content")[0]);
+    ZY.controllerManager.bindHScroll($("#zy_article_content")[0]);
 
     //收回单篇文章展示
     $("#zy_article_content_close").click(function(){
@@ -177,7 +177,10 @@ $(document).ready(function(){
     $(window).scroll(function(){
         ZY.controllerManager.scrollingHandler();
     });
-	
+
+    //window 设置滚动速度
+    ZY.controllerManager.setWheelScrollSpeed();
+
 	/*=====iOS触屏滚动支持=================*/
 	if(ZY.config.deviceCode.iOS){
 		$(".zy_article_content").addClass("zy_touch_hscroll");

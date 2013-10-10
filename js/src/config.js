@@ -11,11 +11,11 @@ ZY.config={
     ajaxurl:"http://lotusprize.com/travel/wp-admin/admin-ajax.php",
     siteurl:"http://lotusprize.com/travel",
     categoryIds:{
-        tdId:13,  //每个分类的id
-        peopleId:15,
-        landscapeId:14,
-        communityId:17,
-        artifactId:16
+        programId:6,  //每个分类的id
+        peopleId:7,
+        landscapeId:10,
+        communityId:9,
+        artifactId:8
     },
     articleWidths:{
         peopleWidth:240, //每个分类的li的宽度

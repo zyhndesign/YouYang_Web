@@ -31,8 +31,8 @@ a{
 /*--音乐播放器,z-index：100--*/
 .zy_music_section{
     position:fixed;
-    top:0px;
-    right: 0px;
+    top:20px;
+    right: 20px;
     height: 50px;
     width: 50px;/*初始值为右边显示按钮的宽度*/
     z-index: 100;
@@ -47,21 +47,21 @@ a{
     transition: 2s ease;*/
 }
 .zy_music_title{
+    font-family: "黑体";
     text-align:center;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px;
     margin: 0px;
-    color:#000;
+    color:#888;
     display: inline-block;
     height: 100%;
     line-height: 50px;
-    width: 50%;
+    width: 180px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .zy_music_controller{
-    width: 50%;
+    width: 210px;
     height: 100%;
     position: absolute;
     top:0px;
@@ -76,6 +76,7 @@ a{
     font-size: 0px;
     cursor: pointer;
     vertical-align: top;
+    float: left;
 }
 a.zy_music_prev{
     width: 80px;
@@ -103,16 +104,27 @@ a.zy_music_next{
 .zy_music_next:hover{
     background: url(../../images/apps/music_next_actived.png) no-repeat;
 }
-.zy_separate{
+.zy_separate_left{
     display: block;
-    height: 30px;
+    height: 14px;
     position: absolute;
-    margin-top: 10px;
+    margin-top: 18px;
+    top:0px;
+    left: 185px;
+    font-size: 0px;
+    width: 1px;
+    background: #ccc;
+}
+.zy_separate_right{
+    display: block;
+    height: 14px;
+    position: absolute;
+    margin-top: 18px;
     top:0px;
     right: 0px;
     font-size: 0px;
     width: 1px;
-    background: #000;
+    background: #ccc;
 }
 .zy_music_show{
     display: inline-block;
@@ -170,7 +182,7 @@ a.zy_music_next{
     color: white;
     width: 50px;
     height: 50px;
-    top:630px;
+    top:600px;
     left: 50%;
     margin-left: -25px;
     z-index: 9;
@@ -183,7 +195,8 @@ a.zy_music_next{
     height: 50px;
     width: 50px;
     position: fixed;
-    top:0px;
+    top:20px;
+    left: 20px;
     z-index: 100;
 }
 .zy_show_menu{
@@ -214,14 +227,22 @@ a.zy_music_next{
     height: 100%;
 }
 .zy_nav ul li a{
-    font-family: "Microsoft YaHei";
+    font-family: "黑体";
     display: inline-block;
-    width: 100%;
+    width: 99px;
     height: 100%;
     line-height: 50px;
-    font-size: 18px;
-    color:#ccc;
-    border-right: 1px solid #ccc;
+    font-size: 16px;
+    color:#888;
+}
+.zy_nav .zy_menu_separate{
+    display: inline-block;
+    width: 1px;
+    background: #ccc;
+    height: 14px;
+    font-size: 0px;
+    vertical-align: middle;
+    margin-top: -1px;
 }
 .zy_nav ul li a:hover,.zy_nav ul li a.active{
     color:#000;
@@ -298,6 +319,10 @@ a.zy_music_next{
     cursor:pointer;
     position:relative;
     vertical-align: top;
+    box-shadow: 0px 0px 5px #444;
+    -webkit-box-shadow: 0px 0px 5px #444;
+    -moz-box-shadow: 0px 0px 5px #444;
+    -ms-box-shadow: 0px 0px 5px #444;
 }
 .zy_featured_articles li .thumb img{
     width:100%;
@@ -305,10 +330,10 @@ a.zy_music_next{
 .zy_featured_articles li .title{
     font-family: "Microsoft YaHei";
     width:100%;
-    font-size:18px;
+    font-size:24px;
     overflow:hidden;
     font-weight: bold;
-    color:#000;
+    color:#333;
     text-align: center;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -316,13 +341,13 @@ a.zy_music_next{
 .zy_featured_articles li .excerpt{
     text-align: left;
     color:#666;
-    height: 72px;
+    height: 63px;
     overflow: hidden;
-    font-size: 14px;
-    line-height: 18px;
-    margin: 10px;
-    padding-top: 10px;
-    border-top:2px solid #ccc;
+    font-size: 12px;
+    line-height: 21px;
+    margin: 10px 20px;
+    padding-top: 20px;
+    border-top:1px solid #ccc;
 }
 
 /*-----------------------------------------------------印象、物语、小结统一的副标题z-index:12--*/
@@ -352,8 +377,8 @@ a.zy_music_next{
 /*向前向后两个按钮*/
 .zy_contain_prev,.zy_contain_next{
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     top:50%;
     margin-top:50px;
     z-index: 1;
@@ -452,7 +477,7 @@ a.zy_music_next{
     height: 600px;
 }
 
-.zy_landscape_list{
+.zy_landscape_list,.zy_people_list,.zy_artifact_list,.zy_community_list{
     margin:0;
     height:100%;
     -webkit-box-sizing:border-box;
@@ -462,9 +487,9 @@ a.zy_music_next{
     font-size:0;
     position: absolute;
     left: 0;
-    padding:0px;
+    padding:20px 0px;
 }
-.zy_landscape_article{
+.zy_landscape_article,.zy_artifact_article{
     display: inline-block;
     width: 300px;
     height: 300px;
@@ -478,7 +503,7 @@ a.zy_music_next{
     overflow:hidden;
     cursor:pointer;
 }
-.zy_landscape_article>.zy_article_thumb{
+.zy_landscape_article>.zy_article_thumb,.zy_artifact_article>.zy_article_thumb{
     width:300px;
     height:300px;
     overflow:hidden;
@@ -486,10 +511,10 @@ a.zy_music_next{
     top:0;
     left:0;
 }
-.zy_landscape_article>.zy_article_thumb img{
+.zy_landscape_article>.zy_article_thumb img,.zy_artifact_article>.zy_article_thumb img{
     width:100%;
 }
-.zy_landscape_article>.zy_article_abstract{
+.zy_landscape_article>.zy_article_abstract,.zy_artifact_article>.zy_article_abstract{
     width:100%;
     height:300px;
     overflow:hidden;
@@ -508,26 +533,28 @@ a.zy_music_next{
     -ms-transition:all 0.4s ease-out;
     transition:all 0.4s ease-out;
 }
-.zy_landscape_article:hover>.zy_article_abstract{
+.zy_landscape_article:hover>.zy_article_abstract,.zy_artifact_article:hover>.zy_article_abstract{
     top:0;
 }
-.zy_landscape_article>.zy_article_abstract h2{
+.zy_landscape_article>.zy_article_abstract h2,.zy_artifact_article>.zy_article_abstract h2{
     font-family: "Microsoft YaHei";
-    font-size:32px;
+    font-size:24px;
     text-align:center;
-    color:#000;
+    color:#333;
     font-weight: bold;
 }
-.zy_landscape_article>.zy_article_abstract p{
-    font-size:16px;
+.zy_landscape_article>.zy_article_abstract p,.zy_artifact_article>.zy_article_abstract p{
+    font-size:12px;
     line-height:2em;
     margin:auto;
-    color:#000;
+    color:#333;
     width:260px;
+    height: 72px;
+    overflow: hidden;
 }
-.zy_landscape_article>.zy_article_abstract p.zy_article_date{
+.zy_landscape_article>.zy_article_abstract p.zy_article_date,.zy_artifact_article>.zy_article_abstract p.zy_article_date{
     font-size:12px;
-    border-top:#ccc 1px solid;
+    border-top:#333 1px solid;
     padding-top:8px;
     position:static;
     text-align:center;
@@ -535,6 +562,7 @@ a.zy_music_next{
     margin:auto;
     display:block;
     color:#000;
+    height: auto;
 }
 
 
@@ -610,27 +638,12 @@ a.zy_music_next{
 	z-index:8;
     padding: 5px 5px 10px 5px;
 }
-
-.zy_people_list,.zy_community_list{
-    padding: 0;
-    margin:0;
-    height:100%;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -ms-box-sizing:border-box;
-    box-sizing:border-box;
-    padding:20px 0;
-    font-size:0;
-    vertical-align:top;
-    position: absolute;
-    left: 0px;
-}
 .zy_people_article,.zy_community_article{
     display: inline-block;
     width: 240px;
     height: 100%;
     white-space: normal;
-    border-right:#ccc 1px solid;
+    border-right:#666 1px solid;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
@@ -661,20 +674,24 @@ a.zy_music_next{
 .zy_people_article>.zy_article_abstract h2,.zy_community_article>.zy_article_abstract h2{
     font-family: "Microsoft YaHei";
     font-size:24px;
-    color:#ca2e3a;
+    color:#b4a797;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .zy_people_article>.zy_article_abstract p,.zy_community_article>.zy_article_abstract p{
-    font-size:16px;
+    font-size:12px;
     line-height:2em;
     margin:5px 0;
+    color:#b4a797;
+    height: 96px;
+    overflow: hidden;
 }
 .zy_people_article>.zy_article_abstract p.zy_article_date,.zy_community_article>.zy_article_abstract p.zy_article_date{
     font-size:12px;
-    border-top:#ccc 1px solid;
+    border-top:#666 1px solid;
     padding-top:8px;
+    height: auto;
 }
 .zy_people_article:nth-child(2n)>.zy_article_thumb,.zy_community_article:nth-child(2n)>.zy_article_thumb{
     bottom:0;
@@ -749,90 +766,8 @@ a.zy_music_next{
 .zy_artifact_contain .zy_contain_prev,.zy_artifact_contain .zy_contain_next{
     margin-top: -10px;
 }
-.zy_artifact_list{
-    margin:0;
-    height:100%;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -ms-box-sizing:border-box;
-    box-sizing:border-box;
-    padding:20px 0;
-    font-size:0;
-    position: absolute;
-    left: 0;
-}
-.zy_artifact_article{
-    display: inline-block;
-    width: 300px;
-    height: 300px;
-    white-space: normal;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -ms-box-sizing:border-box;
-    box-sizing:border-box;
-    margin:0 10px;
-    position:relative;
-    overflow:hidden;
-    cursor:pointer;
-}
-.zy_artifact_article>.zy_article_thumb{
-    width:300px;
-    height:300px;
-    overflow:hidden;
-    position:absolute;
-    top:0;
-    left:0;
-}
-.zy_artifact_article>.zy_article_thumb img{
-    width:100%;
-}
-.zy_artifact_article>.zy_article_abstract{
-    width:100%;
-    height:300px;
-    overflow:hidden;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -ms-box-sizing:border-box;
-    box-sizing:border-box;
-    padding:20px 20px 30px 20px;
-    background:#bfbab4;
-    opacity: .8;
-    position:absolute;
-    top:300px;
-    left:0;
-    -webkit-transition:all 0.4s ease-out;
-    -moz-transition:all 0.4s ease-out;
-    -ms-transition:all 0.4s ease-out;
-    transition:all 0.4s ease-out;
-}
-.zy_artifact_article:hover>.zy_article_abstract{
-    top:0;
-}
-.zy_artifact_article>.zy_article_abstract h2{
-    font-family: "Microsoft YaHei";
-    font-size:32px;
-    text-align:center;
-    color:#000;
-    font-weight: bold;
-}
-.zy_artifact_article>.zy_article_abstract p{
-    font-size:16px;
-    line-height:2em;
-    margin:auto;
-    color:#000;
-    width:260px;
-}
-.zy_artifact_article>.zy_article_abstract p.zy_article_date{
-    font-size:12px;
-    border-top:#ccc 1px solid;
-    padding-top:8px;
-    position:static;
-    text-align:center;
-    width:260px;
-    margin:auto;
-    display:block;
-    color:#000;
-}
+
+
 
 /*-----------------------------------------------------------------------------社区z-index:1--*/
 .zy_community{
@@ -840,7 +775,7 @@ a.zy_music_next{
     z-index:1;
 }
 .zy_community_contain{
-    height: 1200px;
+    height: 1100px;
     background: url(../../images/default_bg/bg_community.png) no-repeat;
     background-size: 100% 100%;
 }
@@ -858,13 +793,14 @@ a.zy_music_next{
     z-index:1;
 }
 .zy_community_bottom{
+    min-width: 1280px;
     width:100%;
     height: 685px;
     background: url(../../images/apps/community_bottom.png) no-repeat;
     background-size: 100% 100%;
     position: absolute;
     left:0px;
-    bottom: 0px;
+    bottom: -200px;
 }
 .zy_community .zy_subheading{
     background: url(../../images/apps/title_community.png) no-repeat;
@@ -1053,7 +989,7 @@ a.zy_music_next{
     background: url(../../images/apps/btn_close_normal.png) no-repeat;
 }
 .zy_show_close:hover{
-    background: url(../../images/apps/btn_close_pressed.png) no-repeat;
+    background: url(../../images/apps/btn_close_active.png) no-repeat;
 }
 
 /*--------------显示文章z-index:9997--------------*/
@@ -1106,104 +1042,28 @@ a.zy_music_next{
 
 /*---------------------loadingSpinner-------------------*/
 /*动画定义*/
-@-webkit-keyframes top{
+@-webkit-keyframes spin{
     0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.6;
+        -webkit-transform:rotate(360deg);
     }
     100%{
-        opacity: 0.2;
+        -webkit-transform:rotate(0deg);
     }
 }
-@-webkit-keyframes center{
+@-moz-keyframes spin{
     0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.2;
+        -moz-transform:rotate(360deg);
     }
     100%{
-        opacity: 0.6;
+        -moz-transform:rotate(0deg);
     }
 }
-@-webkit-keyframes bottom{
+@keyframes spin{
     0%{
-        opacity: 0.2;
-    }
-    50%{
-        opacity: 0.6;
+        transform:rotate(360deg);
     }
     100%{
-        opacity: 1;
-    }
-}
-@-moz-keyframes top{
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.6;
-    }
-    100%{
-        opacity: 0.2;
-    }
-}
-@-moz-keyframes center{
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.2;
-    }
-    100%{
-        opacity: 0.6;
-    }
-}
-@-moz-keyframes bottom{
-    0%{
-        opacity: 0.2;
-    }
-    50%{
-        opacity: 0.6;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-@keyframes top{
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.6;
-    }
-    100%{
-        opacity: 0.2;
-    }
-}
-@keyframes center{
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: 0.2;
-    }
-    100%{
-        opacity: 0.6;
-    }
-}
-@keyframes bottom{
-    0%{
-        opacity: 0.2;
-    }
-    50%{
-        opacity: 0.6;
-    }
-    100%{
-        opacity: 1;
+        transform:rotate(0deg);
     }
 }
 
@@ -1212,44 +1072,18 @@ a.zy_music_next{
 	top:50%;
 	left:50%;
 }
-.zy_loading_top,.zy_loading_center_left,.zy_loading_center_right,.zy_loading_bottom_left,.zy_loading_bottom_right{
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    left: 50%;
-    background: #E83A00;
+.zy_loading_spinner_layer{
+    width: 50px;
+    height: 50px;
+    background: url(../../images/apps/loading.png) no-repeat;
+    -webkit-animation: spin 4s infinite linear reverse;
+    -moz-animation: spin 4s infinite linear reverse;
+    animation: spin 4s infinite linear reverse;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-25px 0 0 -25px;
 }
-.zy_loading_top{
-    margin-left: -5px;
-    -webkit-animation: top 2s infinite linear reverse;
-    -moz-animation: top 2s infinite linear reverse;
-    animation: top 2s infinite linear reverse;
-}
-.zy_loading_center_left,.zy_loading_center_right{
-    top:10px;
-    -webkit-animation: center 2s infinite linear reverse;
-    -moz-animation: center 2s infinite linear reverse;
-    animation: center 2s infinite linear reverse;
-}
-.zy_loading_center_left{
-    margin-left: -15px;
-}
-.zy_loading_center_right{
-    margin-left: 5px;
-}
-.zy_loading_bottom_left,.zy_loading_bottom_right{
-    top:20px;
-    -webkit-animation: bottom 2s infinite linear reverse;
-    -moz-animation: bottom 2s infinite linear reverse;
-    animation: bottom 2s infinite linear reverse;
-}
-.zy_loading_bottom_left{
-    margin-left: -25px;
-}
-.zy_loading_bottom_right{
-    margin-left: 15px;
-}
-
 .zy_article_content{
     background: #fff;
     width: 100%;
@@ -1281,10 +1115,10 @@ a.zy_music_next{
     width: 50px;
     height: 50px;
     display: block;
-    background: url(../../images/apps/back.png) no-repeat ;
+    background: url(../../images/apps/back_default.png) no-repeat ;
 }
 .zy_article_content_close:hover{
-    background: url(../../images/apps/back_actived.png);
+    background: url(../../images/apps/back_active.png);
 }
 .zy_show_load_container{
 	width:100%;
@@ -1341,6 +1175,7 @@ a.zy_music_next{
 .article-head-post h1{
     padding:0;
 	margin:0;
+    font-family: "Microsoft YaHei";
 }
 .article-title-post{
     font-size:36px;
@@ -1544,6 +1379,6 @@ a.zy_music_next{
         width:100%;
     }
     .zy_featured_articles li .excerpt{
-        height: 112px;
+        height: 126px;
     }
 }

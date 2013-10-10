@@ -28,7 +28,7 @@ ZY.dataManager = {
             type:"post",
             data:{
                 action:"zy_get_music",
-                programId:ZY.config.categoryIds.tdId
+                programId:ZY.config.categoryIds.programId
             },
             success:function(response){
                 if(response.success){
@@ -55,7 +55,7 @@ ZY.dataManager = {
             type:"post",
             data:{
                 action:"zy_get_top_posts",
-                programId:ZY.config.categoryIds.tdId
+                programId:ZY.config.categoryIds.programId
             },
             success:function(response){
                 if(response.success){

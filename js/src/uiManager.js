@@ -14,7 +14,7 @@ ZY.uiManager=(function(){
          */
         showMusicPlayer:function(){
             $("#zy_music_section").animate({
-                width:"600px"
+                width:"450px"
             },100,function(){
                 $("#zy_music_player").removeClass("zy_hidden");
             });
@@ -30,7 +30,7 @@ ZY.uiManager=(function(){
 
         showMenu:function(){
             $("#zy_nav").animate({
-                width:"600px"
+                width:"450px"
             },100,function(){
                 $("#zy_menu").removeClass("zy_hidden");
                 $("#zy_show_menu").addClass("zy_show_menu_active");
@@ -89,6 +89,8 @@ ZY.uiManager=(function(){
             if(data["background"]!==null){
                 //第一次才换背景
                 if(data["background"]["type"]!="mp4"){
+
+                    //使用append比使用html函数过度效果好
                     target.append($("<img class='zy_theme_bg_content' src='"+data["background"]["filepath"]+
                         "' onload='ZY.uiManager.fadingIn(this)' />"));
                 }else if(!ZY.config.deviceCode.iOS){

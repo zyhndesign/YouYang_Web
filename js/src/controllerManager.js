@@ -15,7 +15,7 @@ ZY.controllerManager=(function(){
     var peopleRightBottom=-380;
     var artifactLeftTop=150;
     var artifactBottomBottom=-60;
-    var winH=$(window).height();
+    var communityBottomBottom=-200;
     var landScapeBG=$("#zy_landscape_bg .zy_theme_bg_content");
     var peopleBG=$("#zy_people_bg .zy_theme_bg_content");
     var artifactBG=$("#zy_artifact_bg .zy_theme_bg_content");
@@ -39,6 +39,7 @@ ZY.controllerManager=(function(){
     var peopleRightEl=$("#zy_people_right");
     var artifactLeftEl=$("#zy_artifact_left");
     var artifactBottomEl=$("#zy_artifact_bottom");
+    var communityBottomEl=$("#zy_community_bottom");
 
     /**
      * 设置页面的最大个数
@@ -200,12 +201,16 @@ ZY.controllerManager=(function(){
             if(isFirst&&firstPost["post_id"]!=ZY.dataManager.topPostId){
                 if(categoryId==ZY.config.categoryIds.peopleId){
                     ZY.uiManager.updateSectionBg(firstPost,$("#zy_people_theme"));
+                    peopleBG=$("#zy_people_bg .zy_theme_bg_content");
                 }else if(categoryId==ZY.config.categoryIds.landscapeId){
                     ZY.uiManager.updateSectionBg(firstPost,$("#zy_landscape_theme"));
+                    landScapeBG=$("#zy_landscape_bg .zy_theme_bg_content");
                 }else if(categoryId==ZY.config.categoryIds.communityId){
                     ZY.uiManager.updateSectionBg(firstPost,$("#zy_community_theme"));
+                    communityBG=$("#zy_community_bg .zy_theme_bg_content");
                 }else if(categoryId==ZY.config.categoryIds.artifactId){
                     ZY.uiManager.updateSectionBg(firstPost,$("#zy_artifact_theme"));
+                    artifactBG=$("#zy_artifact_bg .zy_theme_bg_content");
                 }
             }
         },
@@ -398,11 +403,11 @@ ZY.controllerManager=(function(){
          * 横向滚轮事件
          * @param {Object} target 需要添加此事件的元素jquery对象
          */
-        wheelScrollModeOn:function(target){
+        bindHScroll:function(target){
             var mousewheelEvt= document.onmousewheel !== undefined ? "mousewheel" : "DOMMouseScroll";
             var mousewheelHandler=function (evt) {
-                var evt = window.event || evt;
                 var left=0;
+                evt = window.event || evt;
                 if(evt.wheelDelta <0 || evt.detail>0){
                     left=target.scrollLeft+500;
                 }else{
@@ -410,16 +415,57 @@ ZY.controllerManager=(function(){
                 }
                 TweenLite.to(target, 0.5, {scrollTo:{x:left}});
 
-                evt.preventDefault();
+                //兼容ie
+                if(evt.preventDefault){
+                    evt.preventDefault();
+                    evt.stopPropagation(); //由于window也绑定有此事件，阻止冒泡到window
+                }else{
+                    evt.returnValue=false;
+                    evt.cancelBubble = false;
+                }
+                //evt.preventDefault();
+
             };
             target.addEventListener(mousewheelEvt, mousewheelHandler);
+        },
+
+        /**
+         * 设置window滚动速度,因为火狐滚动响应过快
+         */
+        setWheelScrollSpeed:function(){
+            var mousewheelEvt= document.onmousewheel !== undefined ? "mousewheel" : "DOMMouseScroll";
+            var mousewheelHandler=function (evt) {
+                var top=$(window).scrollTop();
+                evt = window.event || evt;
+                if(evt.wheelDelta <0 || evt.detail>0){
+                    $(window).scrollTop(top+100);
+                }else{
+                    $(window).scrollTop(top-100);
+                }
+                //TweenLite.killTweensOf(window);
+                //TweenLite.to(window, 0.5, {scrollTo:{y:top}});
+
+                //兼容ie
+                if(evt.preventDefault){
+                    evt.preventDefault();
+                }else{
+                    evt.returnValue=false;
+                }
+                //evt.preventDefault();
+            };
+            window.addEventListener(mousewheelEvt, mousewheelHandler);
         },
 
         /**
          * 页面上下滚动事件,主要是设置背景显示，菜单的高亮,请求数据
          */
         scrollingHandler:function(){
+
+
             var sy=window.pageYOffset;
+
+            //窗口可能放大缩小，每次都需要获取
+            var winH=$(window).height();
 
             //设置顶部菜单状态, 首先重置所有菜单,计算时要减去nav的80高
             $("#zy_nav ul li a").removeClass("active");
@@ -436,7 +482,7 @@ ZY.controllerManager=(function(){
             }
 
             //设置背景状态
-            if(sy>landScapeY-winH && sy<=landScapeY+800){
+            if(sy>landScapeY-winH && sy<=landScapeY+720){
                 if(!ZY.config.deviceCode.iOS){
                         landScapeBG.addClass("zy_bg_fixed");
                     }
@@ -456,7 +502,7 @@ ZY.controllerManager=(function(){
                 landScapeBG.removeClass("zy_bg_fixed");
             }
 
-            if(sy>peopleY-winH && sy<=peopleY+800){
+            if(sy>peopleY-winH && sy<=peopleY+720){
                 if(!ZY.config.deviceCode.iOS){
                         peopleBG.addClass("zy_bg_fixed");
                     }
@@ -476,7 +522,7 @@ ZY.controllerManager=(function(){
                 peopleBG.removeClass("zy_bg_fixed");
             }
 
-            if(sy>artifactY-winH && sy<=artifactY+800){
+            if(sy>artifactY-winH && sy<=artifactY+720){
                 if(!ZY.config.deviceCode.iOS){
                         artifactBG.addClass("zy_bg_fixed");
                     }
@@ -495,7 +541,7 @@ ZY.controllerManager=(function(){
             }else{
                 artifactBG.removeClass("zy_bg_fixed");
             }
-            if(sy>communityY-winH && sy<=communityY+800){
+            if(sy>communityY-winH && sy<=communityY+720){
                 if(!ZY.config.deviceCode.iOS){
                         communityBG.addClass("zy_bg_fixed");
                     }
@@ -517,119 +563,139 @@ ZY.controllerManager=(function(){
 
 
             //控制每一层的动画,需要根据滚动方向来设置
-            if(sy>oldScrollTop){
+            if(!ZY.config.deviceCode.iOS){
+                if(sy>oldScrollTop){
 
-                //向下滚动推荐层的人物变动
-                if(sy>=featuredY-300){
-                    if(featuredBottom<0){
-                        featuredLeftEl.css("bottom",featuredBottom+9);
-                        featuredRightEl.css("bottom",featuredBottom+9);
-                        featuredBottom+=9;
-                    }
-                }
-
-                if(sy>landScapeY+500){
-                    if(landscapeBottom<0){
-                        landscapeLeftEl.css("bottom",landscapeBottom+18);
-                        landscapeRightEl.css("bottom",landscapeBottom+18);
-                        landscapeBottom+=18;
-                    }
-                }
-
-                //向下滚动人文动画
-                if(sy>peopleY){
-                    if(peopleTop>-280){
-                        peopleTopEl.css("top",peopleTop-10);
-                        peopleTop-=10;
-                    }
-
-                    if(peopleLeftBottom<-400){
-                        peopleLeftEl.css("bottom",peopleLeftBottom+15);
-                        peopleLeftBottom+=15;
-                    }
-
-                    if(sy>peopleY+800){
-                        if(peopleRightBottom<-280){
-                            peopleRightEl.css("bottom",peopleRightBottom+15);
-                            peopleRightBottom+=15;
+                    //向下滚动推荐层的人物变动
+                    if(sy>=featuredY-300){
+                        if(featuredBottom+9<=0){
+                            featuredLeftEl.css("bottom",featuredBottom+9);
+                            featuredRightEl.css("bottom",featuredBottom+9);
+                            featuredBottom+=9;
                         }
                     }
 
-                }
-
-                //向下滚动物语变化
-                if(sy>artifactY+300){
-
-                    if(artifactLeftTop>50){
-                        artifactLeftEl.css("top",artifactLeftTop-10);
-                        artifactLeftTop-=10;
-                    }
-
-                    if(sy>artifactY+800){
-                        if(artifactBottomBottom<40){
-                            artifactBottomEl.css("bottom",artifactBottomBottom+10);
-                            artifactBottomBottom+=10;
-                        }
-                    }
-                }
-            }else{
-
-                //向上滚动推荐层的人物变动
-                if(sy<landScapeY){
-
-                    if(featuredBottom>-100){
-                        featuredLeftEl.css("bottom",featuredBottom-9);
-                        featuredRightEl.css("bottom",featuredBottom-9);
-                        featuredBottom-=9;
-                    }
-                }
-
-                if(sy<peopleY){
-                    if(landscapeBottom>-200){
-                        landscapeLeftEl.css("bottom",landscapeBottom-18);
-                        landscapeRightEl.css("bottom",landscapeBottom-18);
-                        landscapeBottom-=18;
-                    }
-                }
-
-                //向上人文动画
-                if(sy<peopleY+1600){
-                    if(sy<peopleY+1200){
-                        if(peopleTop<-180){
-                            peopleTopEl.css("top",peopleTop+10);
-                            peopleTop+=10;
+                    //向下滚动社区动画
+                    if(sy>landScapeY+500){
+                        if(landscapeBottom+18<=0){
+                            landscapeLeftEl.css("bottom",landscapeBottom+18);
+                            landscapeRightEl.css("bottom",landscapeBottom+18);
+                            landscapeBottom+=18;
                         }
                     }
 
-                    if(sy<peopleY+1800){
-                        if(peopleLeftBottom>-600){
-                            peopleLeftEl.css("bottom",peopleLeftBottom-15);
-                            peopleLeftBottom-=15;
+                    //向下滚动人文动画
+                    if(sy>peopleY){
+                        if(peopleTop-10>=-280){
+                            peopleTopEl.css("top",peopleTop-10);
+                            peopleTop-=10;
                         }
 
-                        if(peopleRightBottom>-380){
-                            peopleRightEl.css("bottom",peopleRightBottom-15);
-                            peopleRightBottom-=15;
+                        if(peopleLeftBottom+15<=-400){
+                            peopleLeftEl.css("bottom",peopleLeftBottom+15);
+                            peopleLeftBottom+=15;
+                        }
+
+                        if(sy>peopleY+800){
+                            if(peopleRightBottom+15<=-280){
+                                peopleRightEl.css("bottom",peopleRightBottom+15);
+                                peopleRightBottom+=15;
+                            }
+                        }
+
+                    }
+
+                    //向下滚动物语变化
+                    if(sy>artifactY+300){
+
+                        if(artifactLeftTop-10>=50){
+                            artifactLeftEl.css("top",artifactLeftTop-10);
+                            artifactLeftTop-=10;
+                        }
+
+                        if(sy>artifactY+800){
+                            if(artifactBottomBottom+10<=40){
+                                artifactBottomEl.css("bottom",artifactBottomBottom+10);
+                                artifactBottomBottom+=10;
+                            }
                         }
                     }
 
+                    //向下滚动社区动画
+                    if(sy>communityY+800){
+                        if(communityBottomBottom+15<=0){
+                            communityBottomEl.css("bottom",communityBottomBottom+15);
+                            communityBottomBottom+=15;
+                        }
+                    }
+                }else{
 
-                }
+                    //向上滚动推荐层的人物变动
+                    if(sy<landScapeY){
 
-                //向上物语动画
-                if(sy<artifactY+1600){
-                    if(sy<artifactY+1400){
-                        if(artifactLeftTop<150){
-                            artifactLeftEl.css("top",artifactLeftTop+10);
-                            artifactLeftTop+=10;
+                        if(featuredBottom-9>=-100){
+                            featuredLeftEl.css("bottom",featuredBottom-9);
+                            featuredRightEl.css("bottom",featuredBottom-9);
+                            featuredBottom-=9;
                         }
                     }
 
-                    if(artifactBottomBottom>-60){
-                        artifactBottomEl.css("bottom",artifactBottomBottom-10);
-                        artifactBottomBottom-=10;
+                    //向上滚动风景动画
+                    if(sy<peopleY){
+                        if(landscapeBottom-18>=-200){
+                            landscapeLeftEl.css("bottom",landscapeBottom-18);
+                            landscapeRightEl.css("bottom",landscapeBottom-18);
+                            landscapeBottom-=18;
+                        }
                     }
 
+                    //向上人文动画
+                    if(sy<peopleY+1600){
+                        if(sy<peopleY+1200){
+                            if(peopleTop+10<=-180){
+                                peopleTopEl.css("top",peopleTop+10);
+                                peopleTop+=10;
+                            }
+                        }
+
+                        if(sy<peopleY+1800){
+                            if(peopleLeftBottom-15>=-600){
+                                peopleLeftEl.css("bottom",peopleLeftBottom-15);
+                                peopleLeftBottom-=15;
+                            }
+
+                            if(peopleRightBottom-15>=-380){
+                                peopleRightEl.css("bottom",peopleRightBottom-15);
+                                peopleRightBottom-=15;
+                            }
+                        }
+
+
+                    }
+
+                    //向上物语动画
+                    if(sy<artifactY+1600){
+                        if(sy<artifactY+1400){
+                            if(artifactLeftTop+10<=150){
+                                artifactLeftEl.css("top",artifactLeftTop+10);
+                                artifactLeftTop+=10;
+                            }
+                        }
+
+                        if(artifactBottomBottom-10>=-60){
+                            artifactBottomEl.css("bottom",artifactBottomBottom-10);
+                            artifactBottomBottom-=10;
+                        }
+
+                    }
+
+                    //向上滚动社区动画
+                    if(sy<footerY){
+                        if(communityBottomBottom-15>=-200){
+                            communityBottomEl.css("bottom",communityBottomBottom-15);
+                            communityBottomBottom-=15;
+                        }
+                    }
                 }
             }
 
