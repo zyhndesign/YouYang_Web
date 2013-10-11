@@ -158,6 +158,7 @@ a.zy_music_next{
     position:relative;
     width:100%;
     overflow:hidden;
+    z-index:5;
 }
 .zy_top_post_poster{
     width: 100%;
@@ -223,8 +224,9 @@ a.zy_music_next{
 .zy_nav ul li{
     display: inline-block;
     width: 25%;
-    float: left;
+    list-style: none;
     height: 100%;
+    float: left;
 }
 .zy_nav ul li a{
     font-family: "黑体";
@@ -1380,5 +1382,16 @@ a.zy_music_next{
     }
     .zy_featured_articles li .excerpt{
         height: 126px;
+    }
+}
+@media screen and (min-width: 1900px) {
+    .zy_featured_articles li .excerpt{
+        display: none;
+    }   
+}
+
+@media screen and (min-width: 2150px) {
+    .zy_featured_articles li .title{
+        display: none;
     }
 }
