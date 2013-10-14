@@ -525,8 +525,8 @@ a.zy_music_next{
     -ms-box-sizing:border-box;
     box-sizing:border-box;
     padding:20px 20px 30px 20px;
-    background:#bfbab4;
-    opacity: .8;
+    background:#fff;
+    opacity: .95;
     position:absolute;
     top:300px;
     left:0;
@@ -884,17 +884,17 @@ a.zy_music_next{
 }
 .zy_project_sponsors ul li{
     display: inline-block;
-    width: 190px;
+	padding:0 20px;
 }
 .zy_project_sponsors ul li:first-child{
-    border-right:2px solid #fff;
+    border-right:1px solid #fff;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
 .zy_project_sponsors .zy_logo_mkmj,.zy_project_sponsors .zy_logo_hnusd{
-	width:180px;
-	height:65px;
+	width:150px;
+	height:53px;
 	font-size:0;
 	text-indent:-9999px;
 	margin:auto;
@@ -907,10 +907,10 @@ a.zy_music_next{
 	background:url(../../images/apps/HNU_logo.png) no-repeat;
 }
 .zy_copyright{
-	background:#333;
+	background:#000;
 	padding:50px 0;
 	text-align:center;
-	color:#ccc;
+	color:#666;
 	font-size:0.7em;
 	}
 .zy_app_download{
@@ -1294,6 +1294,7 @@ a.zy_music_next{
     width:300px;
     font-size:36px;
     margin-top:0;
+	font-family:"微软雅黑";
 }
 
 .article-author-slide, .article-category-slide{
