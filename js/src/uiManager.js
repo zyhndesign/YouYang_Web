@@ -14,7 +14,7 @@ ZY.uiManager=(function(){
          */
         showMusicPlayer:function(){
             $("#zy_music_section").animate({
-                width:"450px"
+                width:"500px"
             },100,function(){
                 $("#zy_music_player").removeClass("zy_hidden");
             });
@@ -57,6 +57,26 @@ ZY.uiManager=(function(){
 
             }
 
+        },
+
+        /**
+         * click dropdown btn
+         * @param {Object} target 需要滚动到的元素jquery对象
+         */
+        dropDown:function(target){
+            var top=target.offset().top;
+
+            if(top!= undefined){
+                TweenLite.killTweensOf(window);
+
+                //加1是为了让滚动的事件设置菜单为active状态,如果不加1会显示成上一个菜单active
+                if(target.is("#zy_featured")){
+                    TweenLite.to(window, 1, {scrollTo:{y:top, x:0}});
+                }else{
+                    TweenLite.to(window, 1, {scrollTo:{y:top+720, x:0}});
+                }
+
+            }
         },
 
         /**

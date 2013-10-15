@@ -54,6 +54,12 @@ $(document).ready(function(){
         return false;
     });
 
+    //drop down click
+    $(".zy_dropdown").click(function(){
+       var target=$(this).data("target");
+        ZY.uiManager.dropDown($(target));
+    });
+
 
     //获取封面故事和推荐文章
     ZY.dataManager.getTopPosts();

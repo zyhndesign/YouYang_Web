@@ -61,9 +61,20 @@ ZY.dataManager = {
                 if(response.success){
                     if(response.data.length!=0){
                         var posts=response.data;
-                        this.topPostId=posts[0]["post_id"];
-                        //posts=ZY.controllerManager.transformDatas(posts);
+                        var length=posts.length;
+                        var i=0;
+                        //this.topPostId=posts[0]["post_id"];
                         //ZY.uiManager.showTopPost(posts);
+                        //posts=ZY.controllerManager.transformDatas(posts);
+
+                        //更新背景
+                        for(;i<length;i++){
+                            if(posts[i]["background"]!==null){
+                                ZY.uiManager.updateSectionBg(posts[0],$("#zy_top_post_poster"));
+                                break;
+                            }
+                        }
+
                         ZY.uiManager.showFeaturePosts(posts);
                     }
                 }else{

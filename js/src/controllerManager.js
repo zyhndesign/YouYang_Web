@@ -756,6 +756,7 @@ ZY.controllerManager=(function(){
          * 由于当窗口缩小时显示的个数少了，原来显示的最后一页当前可能已经不是最后一页，此时需要判断移除zy_disable类
          * 由于当窗口放大时显示的个数多了，原来显示的不是最后一页当前可能已经是最后一页，此时需要判断添加zy_disable类
          * @param {Object} targetContain     最外围的容器section
+         * @param {Number} categoryId           分类id
          * @param {Number} width    每个li的宽度
          * @param {Boolean} loaded  是否已经加载过数据
          */

@@ -11,6 +11,15 @@ body{
 .zy_hidden,.zy_disable{
     display: none;
 }
+.hasVideo:before{
+    content:"";
+    background: url(../../images/apps/hasvideo.png) no-repeat;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 0px;
+    top:0px;
+}
 .zy_touch_hscroll{
     overflow:auto !important;
     overflow-x:scroll !important;
@@ -50,12 +59,12 @@ a{
     font-family: "黑体";
     text-align:center;
     font-size: 16px;
-    margin: 0px;
+    margin: 0px 0px 0px 50px;
     color:#888;
     display: inline-block;
     height: 100%;
     line-height: 50px;
-    width: 180px;
+    width: 150px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -110,7 +119,7 @@ a.zy_music_next{
     position: absolute;
     margin-top: 18px;
     top:0px;
-    left: 185px;
+    left: 235px;
     font-size: 0px;
     width: 1px;
     background: #ccc;
@@ -180,6 +189,7 @@ a.zy_music_next{
 }
 .zy_dropdown{
     position: absolute;
+    cursor: pointer;
     color: white;
     width: 50px;
     height: 50px;
@@ -426,12 +436,12 @@ a.zy_music_next{
 .zy_landscape_heading{
     font-size:0;
     background:url(../../images/apps/slogan_landscape.png) no-repeat;
-    width:750px;
-    height:255px;
+    width:730px;
+    height:175px;
     position:absolute;
-    top:280px;
+    top:270px;
     left:50%;
-    margin-left:-375px;
+    margin-left:-365px;
     z-index:1;
 }
 .zy_landscape_left{
@@ -605,12 +615,12 @@ a.zy_music_next{
     font-size:0;
     text-indent:-9999px;
     background:url(../../images/apps/slogan_humanity.png) no-repeat;
-    width:545px;
-    height:130px;
+    width:555px;
+    height:115px;
     position:absolute;
-    top:325px;
+    top:300px;
     left:50%;
-    margin-left:-272.5px;
+    margin-left:-277.5px;
     z-index:1;
 }
 .zy_people .zy_subheading{
@@ -714,12 +724,12 @@ a.zy_music_next{
     font-size:0;
     text-indent:-9999px;
     background:url(../../images/apps/slogan_artifact.png) no-repeat;
-    width:615px;
-    height:190px;
+    width:685px;
+    height:180px;
     position:absolute;
-    top:320px;
+    top:260px;
     left:50%;
-    margin-left:-307.5px;
+    margin-left:-342.5px;
     z-index:1;
 }
 .zy_artifact_left{
@@ -786,12 +796,12 @@ a.zy_music_next{
     font-size:0;
     text-indent:-9999px;
     background:url(../../images/apps/slogan_community.png) no-repeat;
-    width:410px;
-    height:135px;
+    width:635px;
+    height:170px;
     position:absolute;
-    top:332px;
+    top:275px;
     left:50%;
-    margin-left:-205px;
+    margin-left:-317.5px;
     z-index:1;
 }
 .zy_community_bottom{

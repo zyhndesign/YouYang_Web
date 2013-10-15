@@ -96,11 +96,11 @@
     </div>
 
     <h2 class="zy_logo">logo</h2>
-    <span class="zy_dropdown">向下</span>
+    <span class="zy_dropdown" data-target="#zy_featured">向下</span>
 </section>
 
 <!--------------------------------------推荐------------------------------------------>
-<section class="zy_featured">
+<section id="zy_featured" class="zy_featured">
     <div id="zy_featured_left" class="zy_featured_left"></div>
     <header class="zy_featured_heading">推荐</header>
     <div id="zy_featured_right" class="zy_featured_right"></div>
@@ -110,7 +110,11 @@
             {@if index<3}
                 <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}">
                     <div class="abstract">
-                        <div class="thumb"><img src="${post.thumb}" /></div>
+                        {@if post.hasVideo}
+                            <div class="thumb hasVideo"><img src="${post.thumb}" /></div>
+                        {@else}
+                            <div class="thumb"><img src="${post.thumb}" /></div>
+                        {@/if}
                         <h3 class="title">${post.post_title}</h3>
                         <p class="excerpt">${post.post_excerpt}</p>
                     </div>
@@ -131,7 +135,7 @@
         <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg5.png">
     </div>
     <h2 class="zy_landscape_heading">风景</h2>
-    <span class="zy_dropdown">向下</span>
+    <span class="zy_dropdown" data-target="#zy_landscape">向下</span>
     <!--<h3 class="zy_subheading">美不胜收的风景写真</h3>-->
     <section id="zy_landscape_contain" class="zy_landscape_contain">
         <div id="zy_landscape_left" class="zy_landscape_left"></div>
@@ -143,7 +147,12 @@
 
             {@each posts as post}
             <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}" class="zy_landscape_article">
-                <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                {@if post.hasVideo}
+                    <div class="zy_article_thumb hasVideo"><img src="${post.thumb}"/></div>
+                {@else}
+                    <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                {@/if}
+
                 <div class="zy_article_abstract">
                     <h2>${post.post_title}</h2>
                     <p class="zy_article_date">${post.post_date}</p>
@@ -172,7 +181,7 @@
         <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg2.png">
 	</div>
 	<h2 class="zy_people_heading">人文</h2>
-    <span class="zy_dropdown">向下</span>
+    <span class="zy_dropdown" data-target="#zy_people">向下</span>
 	<!--<h3 class="zy_subheading">生生不息的人物故事</h3>-->
 
     <section id="zy_people_contain" class="zy_people_contain">
@@ -186,7 +195,12 @@
 
                 {@each posts as post}
                     <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}" class="zy_people_article">
-                        <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                        {@if post.hasVideo}
+                            <div class="zy_article_thumb hasVideo"><img src="${post.thumb}"/></div>
+                        {@else}
+                            <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                        {@/if}
+
                         <div class="zy_article_abstract">
                             <h2>${post.post_title}</h2>
                             <p class="zy_article_date">${post.post_date}</p>
@@ -211,7 +225,7 @@
         <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg3.png">
 	</div>
 	<h2 class="zy_artifact_heading">物语</h2>
-    <span class="zy_dropdown">向下</span>
+    <span class="zy_dropdown" data-target="#zy_artifact">向下</span>
 	<!--<h3 class="zy_subheading">从传统工艺到现代设计</h3>-->
 
     <section id="zy_artifact_contain" class="zy_artifact_contain">
@@ -224,7 +238,11 @@
 
                 {@each posts as post}
                     <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}" class="zy_artifact_article">
-                        <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                        {@if post.hasVideo}
+                            <div class="zy_article_thumb hasVideo"><img src="${post.thumb}"/></div>
+                        {@else}
+                            <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                        {@/if}
                         <div class="zy_article_abstract">
                             <h2>${post.post_title}</h2>
                             <p class="zy_article_date">${post.post_date}</p>
@@ -251,7 +269,7 @@
         <img class="zy_theme_bg_content zy_theme_bg_default" src="images/default_bg/bg4.png">
 	</div>
 	<h2 class="zy_community_heading">社区</h2>
-    <span class="zy_dropdown">向下</span>
+    <span class="zy_dropdown" data-target="#zy_community">向下</span>
 	<!--<h3 class="zy_subheading">社区互动与参与式创新</h3>-->
 
     <section id="zy_community_contain" class="zy_community_contain">
@@ -263,7 +281,11 @@
 
                 {@each posts as post}
                 <li data-zy-post-id="${post.post_id}" data-zy-post-type="${post.post_mime_type}" class="zy_community_article">
-                    <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                    {@if post.hasVideo}
+                        <div class="zy_article_thumb hasVideo"><img src="${post.thumb}"/></div>
+                    {@else}
+                        <div class="zy_article_thumb"><img src="${post.thumb}"/></div>
+                    {@/if}
                     <div class="zy_article_abstract">
                         <h2>${post.post_title}</h2>
                         <p class="zy_article_date">${post.post_date}</p>
