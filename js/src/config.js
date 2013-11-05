@@ -8,8 +8,8 @@
 var ZY=ZY||{};
 
 ZY.config={
-    ajaxurl:"http://lotusprize.com/travel/wp-admin/admin-ajax.php",
-    siteurl:"http://lotusprize.com/travel",
+    ajaxurl:"http://www.comdesignlab.com/travel/wp-admin/admin-ajax.php",
+    siteurl:"http://www.comdesignlab.com/travel",
     categoryIds:{
         programId:6,  //每个分类的id
         peopleId:7,
