@@ -13,7 +13,7 @@ body{
 }
 .hasVideo:before{
     content:"";
-    background: url(../../images/apps/hasvideo.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -621px;
     width: 80px;
     height: 80px;
     position: absolute;
@@ -94,29 +94,29 @@ a{
 }
 a.zy_music_prev{
     width: 80px;
-    background: url(../../images/apps/music_prev_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -306px -1986px;
 }
 .zy_music_play{
-    background: url(../../images/apps/music_play_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1124px -787px;
 }
 .zy_music_pause{
-    background: url(../../images/apps/music_puase_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1020px -787px;
 }
 a.zy_music_next{
     width: 80px;
-    background: url(../../images/apps/music_next_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -703px;
 }
 .zy_music_prev:hover{
-    background: url(../../images/apps/music_prev_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -388px -1986px;
 }
 .zy_music_play:hover{
-    background: url(../../images/apps/music_play_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1176px -787px;
 }
 .zy_music_pause:hover{
-    background: url(../../images/apps/music_puase_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1072px -787px;
 }
 .zy_music_next:hover{
-    background: url(../../images/apps/music_next_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -755px;
 }
 .zy_separate_left{
     display: block;
@@ -148,7 +148,7 @@ a.zy_music_next{
     font-size: 0px;
     bottom:0px;
     right: 0px;
-    background: url(../../images/apps/music_entrance.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -938px -839px;
     cursor:pointer;
 }
 .zy_music_show.zy_music_show_active{
@@ -185,7 +185,7 @@ a.zy_music_next{
 .zy_logo{
     width: 405px;
     height: 275px;
-    background: url(../../images/apps/logo.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -596px -349px;
     font-size: 0px;
     position: absolute;
     top:50%;
@@ -203,7 +203,7 @@ a.zy_music_next{
     margin-left: -25px;
     z-index: 9;
     font-size: 0px;
-    background: url(../../images/apps/down.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1198px -839px;
 }
 
 /*--菜单栏--*/
@@ -219,14 +219,14 @@ a.zy_music_next{
     color: white;
     display: inline-block;
     font-size: 0px;
-    background: url(../../images/apps/menu_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -859px;
     width: 50px;
     height: 50px;
     position: absolute;
     left: 0px;
 }
 .zy_show_menu:hover,.zy_show_menu_active{
-    background: url(../../images/apps/menu_active.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -990px -839px;
     cursor: pointer;
 }
 .zy_nav ul{
@@ -270,7 +270,7 @@ a.zy_music_next{
 .zy_featured{
     width: 100%;
     height: 800px;
-    background: url(../../images/default_bg/bg_featured.png) no-repeat;
+    background: url(../../images/default_bg/bg_featured.jpg) no-repeat;
     background-size: 100% 100%;
     padding-top: 30px;
     position:relative;
@@ -284,14 +284,14 @@ a.zy_music_next{
 .zy_featured_left{
     width: 330px;
     height: 650px;
-    background: url(../../images/apps/featured_left.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -264px -2px;
     position: absolute;
     left: -120px;
     bottom:-100px;
 }
 .zy_featured_heading{
     width: 370px;
-    background:url(../../images/apps/title_featured.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -1008px -321px;
     height:150px;
     margin: 0 auto;
     color: #ff3300;
@@ -303,7 +303,7 @@ a.zy_music_next{
 .zy_featured_right{
     width: 385px;
     height: 700px;
-    background: url(../../images/apps/featured_right.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -2px -1284px;
     position: absolute;
     right:-190px;
     bottom: -100px;
@@ -409,18 +409,18 @@ a.zy_music_next{
     transition:opacity 0.4s ease-out;
 }
 .zy_contain_prev{
-    background: url(../../images/apps/left_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1094px -839px;
     left:0;
 }
 .zy_contain_next{
-    background: url(../../images/apps/right_defult.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -968px -787px;
     right: 0;
 }
 .zy_contain_prev:hover{
-    background: url(../../images/apps/left_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1146px -839px;
 }
 .zy_contain_next:hover{
-    background: url(../../images/apps/right_actived.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -807px;
 }
 /*水平滑动窗口布局容器*/
 .zy_list_container{
@@ -440,7 +440,7 @@ a.zy_music_next{
 /*--z-index:1--*/
 .zy_landscape_heading{
     font-size:0;
-    background:url(../../images/apps/slogan_landscape.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -1270px -783px;
     width:730px;
     height:175px;
     position:absolute;
@@ -452,7 +452,7 @@ a.zy_music_next{
 .zy_landscape_left{
     width: 620px;
     height: 470px;
-    background: url(../../images/apps/landscape_left.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -264px -654px;
     position: absolute;
     left:0px;
     bottom: -200px;
@@ -467,7 +467,7 @@ a.zy_music_next{
     bottom: -200px;
 }
 .zy_landscape .zy_subheading{
-    background: url(../../images/apps/title_landscape.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -264px -1126px;
     width: 385px;
     height: 155px;
     font-size: 0px;
@@ -480,7 +480,7 @@ a.zy_music_next{
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     box-sizing:border-box;
-    background-image: url(../../images/default_bg/bg_artifact.png);
+    background-image: url(../../images/default_bg/bg_artifact.jpg);
     background-size: 100% 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -592,7 +592,7 @@ a.zy_music_next{
 .zy_people_left{
     width: 260px;
     height: 1280px;
-    background: url(../../images/apps/humanity_left.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -2px -2px;
     position: absolute;
     left:0px;
     bottom: -600px;
@@ -619,7 +619,7 @@ a.zy_music_next{
 .zy_people_heading{
     font-size:0;
     text-indent:-9999px;
-    background:url(../../images/apps/slogan_humanity.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -965px -204px;
     width:555px;
     height:115px;
     position:absolute;
@@ -629,7 +629,7 @@ a.zy_music_next{
     z-index:1;
 }
 .zy_people .zy_subheading{
-    background: url(../../images/apps/title_humanity.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -968px -635px;
     width: 300px;
     height: 150px;
     font-size: 0px;
@@ -646,7 +646,7 @@ a.zy_music_next{
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     box-sizing:border-box;
-    background: url(../../images/default_bg/bg_humanity.png) no-repeat;
+    background: url(../../images/default_bg/bg_humanity.jpg) no-repeat;
     background-size: 100% 100%;
     /* margin-top: 360px;*/
     white-space: nowrap;
@@ -728,7 +728,7 @@ a.zy_music_next{
 .zy_artifact_heading{
     font-size:0;
     text-indent:-9999px;
-    background:url(../../images/apps/slogan_artifact.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -1355px -568px;
     width:685px;
     height:180px;
     position:absolute;
@@ -740,7 +740,7 @@ a.zy_music_next{
 .zy_artifact_left{
     width: 125px;
     height: 345px;
-    background: url(../../images/apps/artifact_left.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -596px -2px;
     position: absolute;
     left:100px;
     top: 150px;
@@ -748,14 +748,14 @@ a.zy_music_next{
 .zy_artifact_bottom{
     width: 505px;
     height: 190px;
-    background: url(../../images/apps/artifact_bottom.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1522px -204px;
     position: absolute;
     left:50%;
     margin-left: -252.5px;
     bottom: -60px;
 }
 .zy_artifact .zy_subheading{
-    background: url(../../images/apps/title_artifact.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1707px -2px;
     width: 320px;
     height: 160px;
     font-size: 0px;
@@ -772,7 +772,7 @@ a.zy_music_next{
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     box-sizing:border-box;
-    background: url(../../images/default_bg/bg_artifact.png) no-repeat;
+    background: url(../../images/default_bg/bg_artifact.jpg) no-repeat;
     background-size: 100% 100%;
     /* margin-top: 360px;*/
     white-space: nowrap;
@@ -793,14 +793,14 @@ a.zy_music_next{
 }
 .zy_community_contain{
     height: 1100px;
-    background: url(../../images/default_bg/bg_community.png) no-repeat;
+    background: url(../../images/default_bg/bg_community.jpg) no-repeat;
     background-size: 100% 100%;
 }
 /*--z-index:1--*/
 .zy_community_heading{
     font-size:0;
     text-indent:-9999px;
-    background:url(../../images/apps/slogan_community.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -1380px -396px;
     width:635px;
     height:170px;
     position:absolute;
@@ -820,7 +820,7 @@ a.zy_music_next{
     bottom: -200px;
 }
 .zy_community .zy_subheading{
-    background: url(../../images/apps/title_community.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1008px -473px;
     width: 345px;
     height: 160px;
     font-size: 0px;
@@ -845,7 +845,7 @@ a.zy_music_next{
 .zy_project{
     height: auto;
     padding:100px 0px 50px 0px;
-    background: url(../../images/default_bg/bg_backgroud.png) no-repeat;
+    background: url(../../images/default_bg/bg_backgroud.jpg) no-repeat;
     background-size: 100% 100%;
 }
 .zy_project_info{
@@ -864,7 +864,7 @@ a.zy_music_next{
     width: 140px;
 	font-size:0;
 	text-indent:-9999px;
-	background:url(../../images/apps/title_background.png) no-repeat;
+	background:url(../../images/apps/sprite.png) no-repeat -1380px -321px;
 	margin:auto;
 }
 .zy_project_info p{
@@ -886,7 +886,7 @@ a.zy_music_next{
 .zy_bottom_logo a{
     width:340px;
     height: 200px;
-    background: url(../../images/apps/logo2.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1365px -2px;
     display: block;
     margin:auto;
     font-size: 0px;
@@ -916,13 +916,14 @@ a.zy_music_next{
 	display:block;
 }
 .zy_project_sponsors .zy_logo_mkmj{
-    background:url(../../images/apps/meikemeijie_logo.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat -2px -1986px;
 }
 .zy_project_sponsors .zy_logo_hnusd{
-	background:url(../../images/apps/HNU_logo.png) no-repeat;
+	background:url(../../images/apps/sprite.png) no-repeat -154px -1986px;
 }
 .zy_copyright{
-	background:#000;
+    background: url(../../images/default_bg/bg_backgroud.jpg) no-repeat;
+    background-size: 100% auto;
 	padding:50px 0;
 	text-align:center;
 	color:#666;
@@ -969,10 +970,10 @@ a.zy_music_next{
 	opacity:0.5;
 	}
 .zy_app_download_list .zy_android_phone_app{
-	background:url(../../images/apps/logo_android_phone.png) no-repeat;
+	background:url(../../images/apps/sprite.png) no-repeat -1270px -635px;
 	}
 .zy_app_download_list .zy_android_pad_app{
-	background:url(../../images/apps/logo_android_pad.png) no-repeat;
+	background:url(../../images/apps/sprite.png) no-repeat -1270px -709px;
 }
 
 /*-----------------------------------------------------------显示视频(从这里开始很多项目共用）----------*/
@@ -1003,10 +1004,10 @@ a.zy_music_next{
     display: block;
     margin: auto;
 	cursor:pointer;
-    background: url(../../images/apps/btn_close_normal.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -938px -891px;
 }
 .zy_show_close:hover{
-    background: url(../../images/apps/btn_close_active.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -886px -911px;
 }
 
 /*--------------显示文章z-index:9997--------------*/
@@ -1027,7 +1028,7 @@ a.zy_music_next{
 	-moz-box-sizing:border-box;
 	-ms-box-sizing:border-box;
 	box-sizing:border-box;
-	background:url(../../images/apps/sprite.png) no-repeat -1284px -2px;
+	background:url(../../images/apps/sprite.png) no-repeat -723px -2px;
 	padding:20px;
 	position:fixed;
 	top:50%;
@@ -1092,7 +1093,7 @@ a.zy_music_next{
 .zy_loading_spinner_layer{
     width: 50px;
     height: 50px;
-    background: url(../../images/apps/loading.png) no-repeat;
+    background: url(../../images/apps/sprite.png) no-repeat -1042px -839px;
     -webkit-animation: spin 4s infinite linear reverse;
     -moz-animation: spin 4s infinite linear reverse;
     animation: spin 4s infinite linear reverse;
@@ -1132,10 +1133,10 @@ a.zy_music_next{
     width: 50px;
     height: 50px;
     display: block;
-    background: url(../../images/apps/back_default.png) no-repeat ;
+    background: url(../../images/apps/sprite.png) no-repeat -990px -891px;
 }
 .zy_article_content_close:hover{
-    background: url(../../images/apps/back_active.png);
+    background: url(../../images/apps/sprite.png) no-repeat -1042px -891px;
 }
 .zy_show_load_container{
 	width:100%;
@@ -1285,7 +1286,7 @@ a.zy_music_next{
 .videoslide:before
 {
     content:"";
-    background:url(../../images/apps/hasvideo.png) no-repeat;
+    background:url(../../images/apps/sprite.png) no-repeat  -886px -621px;
     width:80px;
     height:80px;
     position:absolute;
@@ -1391,7 +1392,7 @@ a.zy_music_next{
     .zy_bottom_logo a{
         width:240px;
         height: 140px;
-        background: url(../../images/apps/logo3_240.png) no-repeat;
+        background: url(../../images/apps/sprite.png) no-repeat -723px -204px;
     }
     .zy_nav ul{
         width:100%;
