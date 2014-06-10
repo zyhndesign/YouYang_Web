@@ -184,6 +184,9 @@ $(document).ready(function(){
         ZY.controllerManager.scrollingHandler();
     });
 
+    //有可能刷新就已经滚动到了一定位置，需要触发一下，加载相应的数据
+    $(window).trigger("scroll");
+
     //window 设置滚动速度
     ZY.controllerManager.setWheelScrollSpeed();
 
