@@ -1242,6 +1242,7 @@ a.zy_music_next{
     right:0px;
     width:100%;
     bottom:150px;
+    height: 100%;
     padding:0 0 20px 40px;
     -webkit-column-gap:40px;
     -webkit-column-width:260px;
@@ -1251,7 +1252,7 @@ a.zy_music_next{
     column-width:260px;
     line-height:2em;
     letter-spacing:2px;
-    z-index:1;
+    z-index:10;
 
 }
 .article-content-post::first-letter{
